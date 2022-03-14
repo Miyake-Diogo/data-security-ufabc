@@ -1,10 +1,12 @@
 "Implementation of Vigenere Cypher in Python "
 "Diogo Miyake - 21048813"
+
 """Responda com suas palavras: por que a expressão algébrica
 equivale ao uso da Tabela de Vigenère com lápis e papel?
  
 A expressão faz com que a tabela funcione 
 de acordo com cada caractere e sua respectiva chave"""
+
 
 class vigenereCypher:
     def __init__(self, key):
@@ -18,9 +20,11 @@ class vigenereCypher:
             for i in range(len(text) -
                         len(key)):
                 key.append(key[i % len(key)])
-        return("" . join(key))
+
+        key_generated = ("" . join(key))
+        return key_generated
         
-    def get_cipher_text(self, original_text, key):
+    def get_encripted_text(self, original_text, key):
         "Return encripted text"
         
         cipher_text = []
@@ -29,9 +33,10 @@ class vigenereCypher:
                 ord(key[i])) % 26
             x += ord('A')
             cipher_text.append(chr(x))
-        return("" . join(cipher_text))
+        encripted = ("" . join(cipher_text))
+        return encripted
         
-    def get_original_text(self, cipher_text, key):
+    def get_decripted_text(self, cipher_text, key):
         "Return Original Text"
         orig_text = []
         for i in range(len(cipher_text)):
@@ -39,17 +44,7 @@ class vigenereCypher:
                 ord(key[i]) + 26) % 26
             x += ord('A')
             orig_text.append(chr(x))
-        return("" . join(orig_text))
+
+        decripted = ("" . join(orig_text))
+        return decripted
 	
-if __name__ == "__main__":
-    text_string = "UFABC"
-    keyword_text = "ABCDE"
-    vigenere = vigenereCypher(keyword_text)
-    key = vigenere.generate_key(text, keyword_text)
-    cipher_text = vigenere.get_cipher_text(text,key)
-
-    print("Key: ", key)
-    print("Ciphertext :", cipher_text)
-    print("Original/Decrypted Text :",
-        vigenere.get_original_text(cipher_text, key))
-

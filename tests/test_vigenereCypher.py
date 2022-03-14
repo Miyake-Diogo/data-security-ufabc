@@ -19,13 +19,13 @@ class test_vigenereCypher(TestCase):
         keyword_text = "UFABC"
         vigenere = vigenereCypher(keyword_text)
         key = vigenere.generate_key('ABCDE', keyword_text)
-        expected_cipher_text = vigenere.get_cipher_text(keyword_text,key)
+        expected_cipher_text = vigenere.get_encripted_text(keyword_text,key)
         self.assertEqual(expected_cipher_text, "OKACE")
 
     def test_if_original_text_is_work(self):
         keyword_text = "UFABC"
         vigenere = vigenereCypher(keyword_text)
         key = vigenere.generate_key('ABCDE', keyword_text)
-        cipher_text = vigenere.get_cipher_text(keyword_text,key)
-        expected_original_text = vigenere.get_original_text(cipher_text, key)
+        cipher_text = vigenere.get_encripted_text(keyword_text,key)
+        expected_original_text = vigenere.get_decripted_text(cipher_text, key)
         self.assertEqual(expected_original_text, 'UFABC')
